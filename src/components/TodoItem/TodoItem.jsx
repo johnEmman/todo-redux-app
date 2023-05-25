@@ -7,8 +7,7 @@ import {
 } from "react-icons/fa";
 import cx from "classnames";
 import "./TodoItem.css";
-import { deleteTodo, updateTodo, addTodo } from '../../store/reducers/todos';
-
+import { deleteTodo, updateTodo } from "../../store/reducers/todos";
 
 export default function TodoItem({ todo }) {
   const { id, title, text, state } = todo;
@@ -35,22 +34,32 @@ export default function TodoItem({ todo }) {
   });
 
   const doneClassName = cx("todo-mark-done", {
-    "done": state === "done",
+    done: state === "done",
   });
 
   return (
-    <div
-      className={containerClassName}
-    >
+    <div className={containerClassName}>
       <div className="todo-item-header-container">
         <h2 className="todo-item-header">{title}</h2>
-        <FaRegWindowClose size={20} className="todo-item-cross" onClick={onDeleteClick}/>
+        <FaRegWindowClose
+          size={20}
+          className="todo-item-cross"
+          onClick={onDeleteClick}
+        />
       </div>
       <p className="todo-item-text">{text}</p>
       <div className="todo-status-container">
         <div className="todo-status">{state}</div>
-        <FaHourglassHalf size={20} className={inProgressClassName} onClick={onInProgressClick}/>
-        <FaCheckCircle size={20} className={doneClassName} onClick={onDoneClick}/>
+        <FaHourglassHalf
+          size={20}
+          className={inProgressClassName}
+          onClick={onInProgressClick}
+        />
+        <FaCheckCircle
+          size={20}
+          className={doneClassName}
+          onClick={onDoneClick}
+        />
       </div>
     </div>
   );

@@ -2,29 +2,25 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { todoAPI } from "../../api";
 
 // the outside "thunk creator" function
-export const fetchTodos = createAsyncThunk("todos/fetchAll", () => 
+export const fetchTodos = createAsyncThunk("todos/fetchAll", () =>
   todoAPI.fetchAll()
 );
 export const deleteTodo = createAsyncThunk("todo/delete", (id) => {
   // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
-}
-);
-export const updateTodo = createAsyncThunk("todo/update", (id, todo) => {
+});
+export const updateTodo = createAsyncThunk("todo/update", (payload) => {
   // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
-}
-);
+});
 export const addTodo = createAsyncThunk("todo/add", (todo) => {
-    // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
- }
-);
+  // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
+});
 
 const initialState = [];
 
 const todosSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchTodos.fulfilled, (state, action) => {
       Object.assign(state, action.payload);

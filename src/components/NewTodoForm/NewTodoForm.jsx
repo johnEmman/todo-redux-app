@@ -7,6 +7,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Modal from "@mui/material/Modal";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import "./NewTodoForm.css";
+import { addTodo } from "../../store/reducers/todos";
 
 const style = {
   position: "absolute",
@@ -20,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export function NewTodoForm({className}) {
+export function NewTodoForm({ className }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleOpen = useCallback(() => setOpen(true), []);
