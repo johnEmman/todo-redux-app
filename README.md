@@ -6,34 +6,61 @@ It uses [Redux-toolkit](https://redux-toolkit.js.org/) for state management, [Ma
 
 You task is to find all the places with `// TODO:` comments in the code and fill it with an appropriate code.
 
+## Prerequisites
+
+NodeJS >= 14.x
+
+## Build Scripts
+
+- Install dependencies
+
+  ```bash
+  $ npm install
+  ```
+
+- Start REST API server
+
+  ```bash
+  $ npm run server
+  ```
+
+- Start development server
+
+  ```bash
+  $ npm run dev
+  ```
+
 ## Starting the Application
 
-In order to start the application you should first start the API server by executing `npm run server` in the terminal
+Running `npm run server` will start the REST API server that you will use for this project.
+This is a sample back-end server that will help you mock or prototype sending API requests.
 
 You can verify that it's working by visiting http://localhost:3000/todos
+It should respond with JSON-list of objects (todos)
 
-It should respond with JSON-list of objects (todos) 
-
-Next in another terminal you should start the frontend by executing `npm run dev`
-
+Executing `npm run dev` will start your React front-end.
 You can open the frontend by visiting http://localhost:5173/
 
 ## TODO API
 
-Below is a description of API, using which, you can complete the missing parts of the Application. 
+Below is a description of API, using which, you can complete the missing parts of the Application.
 
 ### Create a todo
+
 > POST /todos
 >
 > body (JSON): {"title": "New todo", "text": "todo text", "state": "new" / "in progress" / "done"}
 
 ### READ
+
 > GET /todos
 
 ### UPDATE
+
 > PUT /todos/:id
 >
 > body (JSON): {"title": "New title", "text": "new text", "state": "new" / "in progress" / "done"}
 
 ### DELETE
+
 > GET /todos/:id
