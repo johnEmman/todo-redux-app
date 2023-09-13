@@ -5,17 +5,20 @@ import { todoAPI } from "../../api";
 export const fetchTodos = createAsyncThunk("todos/fetchAll", () =>
   todoAPI.fetchAll()
 );
-export const deleteTodo = createAsyncThunk("todo/delete", (id) => {
+export const deleteTodo = createAsyncThunk("todo/delete", async (id) => {
   // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
-  todoAPI.deleteOne(id);
+  await todoAPI.deleteOne(id);
+
+  return id;
 });
-export const updateTodo = createAsyncThunk("todo/update", (payload) => {
+export const updateTodo = createAsyncThunk("todo/update", async (payload) => {
   // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
-  todoAPI.updateOne(payload);
+  return payload;
 });
-export const addTodo = createAsyncThunk("todo/add", (todo) => {
+export const addTodo = createAsyncThunk("todo/add", async (todo) => {
   // TODO: return a call  to corresponding API method i.e. todoAPI.fetchAll()
-  todoAPI.createOne(todo);
+  const newTodo = await todoAPI.createOne(todo);
+  return newTodo;
 });
 
 const initialState = [];
@@ -36,7 +39,8 @@ const todosSlice = createSlice({
 
     builder.addCase(addTodo.fulfilled, (state, action) => {
       // TODO: Finish the code for adding todo
-      [...state, action.payload];
+      state.push(action.payload);
+      console.log(action.payload);
     });
 
     builder.addCase(updateTodo.fulfilled, (state, action) => {

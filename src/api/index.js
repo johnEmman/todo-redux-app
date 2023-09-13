@@ -12,7 +12,7 @@ export const todoAPI = {
     const options = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ todo }),
+      body: JSON.stringify(todo),
     };
 
     return fetch(`${BASE_URL}/todos/${id}`, options).then((res) => res.json());
@@ -24,7 +24,7 @@ export const todoAPI = {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ todo }),
+      body: JSON.stringify(todo),
     };
     return fetch(`${BASE_URL}/todos`, options).then((res) => res.json());
   },
@@ -33,8 +33,8 @@ export const todoAPI = {
     // URL: /todos/{id} -- the id here is the id value of the todo item to be deleted
     // HINT: to delete a todo item use DELETE method
     const options = {
-      method: "",
-      headers: "",
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
     };
     return fetch(`${BASE_URL}/todos/${id}`, options).then((res) => res.json());
   },

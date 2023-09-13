@@ -32,9 +32,11 @@ export function NewTodoForm({ className }) {
       const title = e.target[0].value;
       const text = e.target[2].value;
       // TODO: add a dispatch call to an appropriate redux action here
+      const newState = "new";
+      dispatch(addTodo({ title, text, state: newState }));
       handleClose();
     },
-    [handleClose]
+    [handleClose, dispatch]
   );
   return (
     <div className={className}>

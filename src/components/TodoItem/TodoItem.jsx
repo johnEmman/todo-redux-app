@@ -12,18 +12,22 @@ import { deleteTodo, updateTodo } from "../../store/reducers/todos";
 export default function TodoItem({ todo }) {
   const { id, title, text, state } = todo;
   // TODO: call useDispatch here to get access to dispatch function
+  const dispatch = useDispatch();
 
   const onDeleteClick = useCallback(() => {
     // TODO: Dispacth corresponding action
-  }, []);
+    dispatch(deleteTodo(id));
+  }, [dispatch, id]);
 
   const onDoneClick = useCallback(() => {
     // TODO: Dispacth corresponding action
-  }, []);
+    dispatch(updateTodo({ id, title, text, state: "done" }));
+  }, [dispatch, id]);
 
   const onInProgressClick = useCallback(() => {
     // TODO: Dispacth corresponding action
-  }, []);
+    dispatch(updateTodo({ id, title, text, state: "in progress" }));
+  }, [dispatch, id]);
 
   const containerClassName = cx("todo-item-container", {
     "todo-item-done": state === "done",
